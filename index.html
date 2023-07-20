@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+
+</head>
+
+<body>
+
+    <div class="main-header">
+        <div class="main-div"></div>
+
+        <div class="video-background">
+            <div class="video-bg"></div>
+            <div class="center">
+                <div class="video1">
+                    <video autoplay muted loop>
+                        <source src="https://designsupply-web.com/public/samplecontent/vender/codepen/20181014.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+                <video autoplay muted loop class="video2">
+                    <source src="https://youtu.be/-DErwWVcRpM" type="video/mp4">
+                </video>
+                <video autoplay muted loop class="video3">
+                    <source src="https://designsupply-web.com/public/samplecontent/vender/codepen/20181014.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div class="content">
+                <h1 id="quote">Welcome to the channel</h1>
+                <p>Please Like & Subscribe</p>
+                <br /> <br />
+                <div class="text">
+                    Macaroon croissant pastry shortbread cupcake chupa chups pudding. Gummies pie candy canes sweet roll
+                    cake chupa chups cake fruitcake. Cake bonbon chupa chups carrot cake cake gingerbread cookie cake.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
+    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+
+    <script>
+        const tl = new TimelineMax();
+        tl.fromTo('.video-background', 1, { height: '0%' }, { height: '80%', ease: Power2.easeInOut })
+            .fromTo('.video-background', 1.2, { width: '100%' }, { width: '80%', ease: Expo.easeOut })
+            .fromTo('.video1', 1.2, { width: '100%' }, { width: '0%', ease: Expo.easeOut })
+            .fromTo('.main-div', 1.2, { width: '0%' }, { width: '100%', ease: Power2.easeInOut }, "-=")
+        const tl1 = new TimelineMax();
+        tl1.fromTo('.content', 1, { y: 0 }, { y: 0, ease: Power1.easeInOut })
+
+
+        var quote = $("h1,p"),
+            mySplitText = new SplitText(quote, { type: "words" }),
+            splitTextTimeline = gsap.timeline();
+
+        gsap.set(quote, { perspective: 400 });
+
+        mySplitText.split({ type: "chars, words" })
+        splitTextTimeline.from(mySplitText.chars, { duration: 1, scale: 4, autoAlpha: 0, rotationX: -180, transformOrigin: "100% 50%", ease: "back", stagger: 0.10 });
+
+        gsap.config({ trialWarn: false });
+
+        gsap.registerPlugin(SplitText);
+        const split = new SplitText(".text", { type: "lines" });
+
+        split.lines.forEach((target) => {
+            gsap.to(target, {
+                backgroundPositionX: 0,
+                ease: "none",
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+@mixin commonstyle($par1, $par2, $par3){
+    text-transform: $par1;
+    letter-spacing: $par3;
+    font-size: $par2;
+}
+@mixin flexprop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin position($par1){
+    position: $par1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+@mixin middlediv{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
